@@ -30,13 +30,13 @@ jobs:
       - name: Docker Build and Push to Docker Hub
         run: |
          docker build -t medical .
-         docker tag medical prajwalbk/GIT:latest
+         docker tag medical prajwalbk07/demo:latest
          docker login -u ${{secrets.DOCKERHUB_USERNAME}} -p ${{ secrets.DOCKERHUB_TOKEN }}
-         docker push prajwal/GIT:latest
+         docker push prajwalbk07/demo:latest
         env:
           DOCKER_CLI_ACI: 1
 
-      - name: Lint and Flake8
+      - name: Lint with flake8
         run: |
-         flake8 . --count --select=E9, F63, F7, F82 --show-source --statitics
-         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+            flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+            flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
